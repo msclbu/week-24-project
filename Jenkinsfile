@@ -36,6 +36,7 @@ pipeline {
             }
             
             steps {
+                sh "aws s3api get-object --bucket week-24-project-1234 --key remote.tfstate test"
                 sh 'terraform init -input=false -migrate-state'
                 sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
 
