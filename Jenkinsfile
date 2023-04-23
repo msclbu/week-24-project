@@ -40,7 +40,7 @@ pipeline {
                 sh 'terraform init -input=false -migrate-state'
                 sh 'terraform workspace select ${environment} || terraform workspace new ${environment}'
 
-                sh "terraform plan -input=false -var-file="main.tfvars" -out tfplan "
+                sh 'terraform plan -input=false -var-file="main.tfvars" -out tfplan'
                 sh 'terraform show -no-color tfplan > tfplan.txt'
             }
         }
